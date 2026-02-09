@@ -1,4 +1,6 @@
 import { Github } from "lucide-react";
+import { Linkedin } from "lucide-react";
+
 
 const Footer = () => (
   <footer className="border-t py-8 mt-12">
@@ -6,6 +8,18 @@ const Footer = () => (
       <p>
         Built by <span className="font-medium text-foreground">Konda Kristhu Raju</span> · Internship Project 2026
       </p>
+      <div className="flex items-center gap-2">
+  <a
+    href="https://www.linkedin.com/in/kristhuraju/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 text-sm hover:text-primary transition"
+  >
+    <Linkedin className="w-4 h-4" />
+    <span>Kristhu Raju</span>
+  </a>
+</div>
+
       <a
         href="https://github.com/rajukonda767"
         target="_blank"
