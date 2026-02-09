@@ -34,7 +34,7 @@ const Index = () => {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("http://127.0.0.1:5000/predict", {
+    const response = await fetch("https://fraud-detection-backend-i8k2.onrender.com/predict", {
       method: "POST",
       body: formData,
     });
