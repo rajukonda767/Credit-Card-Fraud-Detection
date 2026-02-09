@@ -3,6 +3,11 @@ import pandas as pd
 import joblib
 from flask_cors import CORS
 
+@app.route("/", methods=["GET"])
+def health():
+    return {"status": "Backend is awake"}
+
+
 app = Flask(__name__)
 CORS(app)  # allow frontend to talk to backend
 

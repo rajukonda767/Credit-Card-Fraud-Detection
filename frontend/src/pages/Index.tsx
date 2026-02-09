@@ -5,6 +5,8 @@ import ResultsSection, { Results } from "@/components/ResultsSection";
 import ModelPerformance from "@/components/ModelPerformance";
 import Footer from "@/components/Footer";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useEffect } from "react";
+
 
 
 const MODEL_METRICS = {
@@ -28,9 +30,17 @@ const SAMPLE_FRAUD_DATASET = `Time,Amount,V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12
 const Index = () => {
   const [results, setResults] = useState<Results | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+  fetch("https://fraud-detection-backend-i8k2.onrender.com/")
+    .catch(() => {});
+}, []);
+
 
   const handleUpload = useCallback(async (file: File) => {
   setIsProcessing(true);
+  setStatusMessage("Waking up server, please wait...");
 
   try {
     const formData = new FormData();
@@ -40,6 +50,8 @@ const Index = () => {
       method: "POST",
       body: formData,
     });
+    setStatusMessage("Analyzing transactions...");
+
 
     const data = await response.json();
 
@@ -53,6 +65,7 @@ const Index = () => {
     alert("Prediction failed. Check backend.");
   } finally {
     setIsProcessing(false);
+    setStatusMessage(null);
   }
   }, []);
 
@@ -104,6 +117,11 @@ return (
 
       {/* Upload + Prediction */}
       <UploadSection onUpload={handleUpload} isProcessing={isProcessing} />
+      {isProcessing && statusMessage && (
+  <p className="text-center text-sm text-muted-foreground mt-4">
+    {statusMessage}
+  </p>
+)}
 
       {/* Results from backend */}
       {results && (
