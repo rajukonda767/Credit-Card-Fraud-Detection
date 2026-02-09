@@ -4,6 +4,8 @@ import UploadSection from "@/components/UploadSection";
 import ResultsSection, { Results } from "@/components/ResultsSection";
 import ModelPerformance from "@/components/ModelPerformance";
 import Footer from "@/components/Footer";
+import ThemeToggle from "@/components/ThemeToggle";
+
 
 const MODEL_METRICS = {
   precision: 0.95,
@@ -69,7 +71,11 @@ const Index = () => {
 return (
   <div className="min-h-screen flex flex-col">
     <div className="container mx-auto px-4 max-w-4xl flex-1">
+
       <HeroSection />
+      <div className="flex justify-center mt-6 mb-8">
+  <ThemeToggle />
+</div>
       {/* SAMPLE DATASET SECTION */}
       <div className="mb-8 rounded-lg border p-4 bg-muted/40">
         <h3 className="text-base font-semibold mb-2">
