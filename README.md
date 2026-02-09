@@ -8,7 +8,7 @@ The system supports CSV uploads, real-time predictions, model performance visual
 ## 🚀 Live Demo
 
 - **Frontend (Vercel):**  
-  👉 https://credit-card-fraud-detection-ka75fa1le.vercel.app
+  👉 https://credit-card-fraud-detection-ilga38t5r.vercel.app/
 
 - **Backend API (Render):**  
   👉 https://fraud-detection-backend-i8k2.onrender.com
