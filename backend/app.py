@@ -9,9 +9,9 @@ def health():
 
 
 app = Flask(__name__)
-CORS(app)  # allow frontend to talk to backend
+CORS(app)  
 
-# Load model and scaler
+
 model = joblib.load("rf_fraud_model.pkl")
 scaler = joblib.load("scaler.pkl")
 
@@ -22,12 +22,9 @@ def predict():
 
     file = request.files["file"]
     df = pd.read_csv(file)
-
-    # ✅ RECREATE FEATURE USED DURING TRAINING
     if "Hour" not in df.columns:
         df["Hour"] = df["Time"] / 3600
 
-    # ✅ EXACT feature order used during training
     feature_order = scaler.feature_names_in_
 
     X = df[feature_order]
